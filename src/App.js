@@ -4,7 +4,7 @@ import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
 
 function App() {
-  const times = [
+  const [times, setTimes] = useState([
     { nome: "Programação", corPrimaria: "#57C278", corSecundaria: "#D9F7E9" },
     { nome: "Front-End", corPrimaria: "#82CFFA", corSecundaria: "#E8F8FF" },
     { nome: "Data Science", corPrimaria: "#A6D157", corSecundaria: "#F0F8E2" },
@@ -16,7 +16,7 @@ function App() {
       corPrimaria: "#FF8A29",
       corSecundaria: "#FFEEDF",
     },
-  ];
+  ]);
 
   const [colaboradores, setColaboradores] = useState([]);
 
@@ -27,6 +27,17 @@ function App() {
 
   function deletarColaborador() {
     console.log("deletando colaborador");
+  }
+
+  function mudarCorDoTime(cor, nome) {
+    setTimes(
+      times.map((time) => {
+        if (time.nome === nome) {
+          time.corSecundaria = cor;
+        }
+        return time;
+      }),
+    );
   }
 
   return (
@@ -40,6 +51,7 @@ function App() {
       ></Formulario>
       {times.map((time) => (
         <Time
+          mudarCor={mudarCorDoTime}
           key={time.nome}
           time={time}
           colaboradores={colaboradores.filter(
