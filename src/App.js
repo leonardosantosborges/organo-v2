@@ -22,8 +22,9 @@ function App() {
     setColaboradores([...colaboradores, { ...colaborador, id: uuidv4() }]);
   };
 
-  function deletarColaborador() {
-    console.log("deletando colaborador");
+  function deletarColaborador(id) {
+    console.log("deletando colaborador: ", id);
+    setColaboradores(colaboradores.filter(colaborador => colaborador.id != id))
   }
 
   function mudarCorDoTime(cor, id) {
