@@ -2,33 +2,34 @@ import { useState } from "react";
 import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [times, setTimes] = useState([
-    { nome: "Programação", cor: "#D9F7E9" },
-    { nome: "Front-End", cor: "#E8F8FF" },
-    { nome: "Data Science", cor: "#F0F8E2" },
-    { nome: "DevOps", cor: "#FDE7E8" },
-    { nome: "Ux e Design", cor: "#FAE9F5" },
-    { nome: "Mobile", cor: "#FFF5D9" },
-    { nome: "Inovação e Gestão", cor: "#FFEEDF",},
+    { id: uuidv4(), nome: "Programação", cor: "#D9F7E9" },
+    { id: uuidv4(), nome: "Front-End", cor: "#E8F8FF" },
+    { id: uuidv4(), nome: "Data Science", cor: "#F0F8E2" },
+    { id: uuidv4(), nome: "DevOps", cor: "#FDE7E8" },
+    { id: uuidv4(), nome: "Ux e Design", cor: "#FAE9F5" },
+    { id: uuidv4(), nome: "Mobile", cor: "#FFF5D9" },
+    { id: uuidv4(), nome: "Inovação e Gestão", cor: "#FFEEDF" },
   ]);
 
   const [colaboradores, setColaboradores] = useState([]);
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     // debugger
-    setColaboradores([...colaboradores, colaborador]);
+    setColaboradores([...colaboradores, { ...colaborador, id: uuidv4() }]);
   };
 
   function deletarColaborador() {
     console.log("deletando colaborador");
   }
 
-  function mudarCorDoTime(cor, nome) {
+  function mudarCorDoTime(cor, id) {
     setTimes(
       times.map((time) => {
-        if (time.nome === nome) {
+        if (time.id === id) {
           time.cor = cor;
         }
         return time;
