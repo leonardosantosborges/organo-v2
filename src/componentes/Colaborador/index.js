@@ -38,7 +38,7 @@ const Colaborador = ({
 
         <div className="favoritar">
           {colaborador.favorito ? (
-            <AiFillHeart {...propsFavorito} color="red" />
+            <AiFillHeart {...propsFavorito} color="ff0000" />
           ) : (
             <AiOutlineHeart {...propsFavorito} />
           )}
